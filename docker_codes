@@ -1,0 +1,6 @@
+To Start: docker compose up
+To Stop: docker compose down
+To execute Dag’s: docker-compose exec airflow airflow dags trigger forecast_pipeline
+docker-compose exec airflow airflow dags trigger stock_price_pipeline
+ 
+
