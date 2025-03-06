@@ -1,0 +1,45 @@
+--Google Forecast:
+SELECT * FROM STOCK.PUBLIC.STOCK_FORECAST WHERE SYMBOL = 'GOOGL' LIMIT 7;
+--Apple Forecast:
+SELECT * FROM STOCK.PUBLIC.STOCK_FORECAST WHERE SYMBOL = 'AAPL' LIMIT 7;
+--Apple Stocks 180 days data:
+SELECT DATE, SYMBOL, FORECAST
+FROM STOCK.PUBLIC.STOCK_FORECAST
+WHERE SYMBOL = 'AAPL'
+ORDER BY DATE;
+--Google Stock’s 180 days Data:
+SELECT DATE, SYMBOL, FORECAST
+FROM STOCK.PUBLIC.STOCK_FORECAST
+WHERE SYMBOL = 'GOOGL'
+
+--Stock_Data Table:
+CREATE OR REPLACE TABLE STOCK.PUBLIC.STOCK_DATA (
+    SYMBOL STRING,       -- Stock symbol (e.g., GOOGL, AAPL)
+    DATE DATE,           -- Trading date
+    OPEN FLOAT,          -- Opening price
+    CLOSE FLOAT,         -- Closing price
+    LOW FLOAT,           -- Lowest price of the day
+    HIGH FLOAT,          -- Highest price of the day
+    VOLUME INTEGER       -- Number of shares traded
+);
+
+--STOCK_FORECAST Table:
+CREATE OR REPLACE TABLE STOCK.PUBLIC.STOCK_FORECAST (
+    SYMBOL STRING,       -- Stock symbol (e.g., GOOGL, AAPL)
+    DATE DATE,           -- Forecasted date
+    ACTUAL FLOAT,        -- Actual closing price (if available, NULL otherwise)
+    FORECAST FLOAT       -- Forecasted closing price
+);
+
+--STOCK_DATA_STAGING:
+CREATE OR REPLACE TABLE STOCK.PUBLIC.STOCK_DATA_STAGING (
+    SYMBOL STRING,       -- Stock symbol (e.g., GOOGL, AAPL)
+    DATE DATE,           -- Trading date
+    OPEN FLOAT,          -- Opening price
+    CLOSE FLOAT,         -- Closing price
+    LOW FLOAT,           -- Lowest price of the day
+    HIGH FLOAT,          -- Highest price of the day
+    VOLUME INTEGER       -- Number of shares traded
+);
+
+
